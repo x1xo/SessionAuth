@@ -19,7 +19,6 @@ func GetUser(c *fiber.Ctx) error {
 				"code":    "UNAUTHENTICATED",
 				"message": "Session token couldn't be found in header or cookie",
 			},
-			"data": fiber.Map{},
 		})
 	}
 
@@ -30,7 +29,6 @@ func GetUser(c *fiber.Ctx) error {
 				"code":    "UNAUTHENTICATED",
 				"message": "Session token is invalid.",
 			},
-			"data": fiber.Map{},
 		})
 	}
 
@@ -42,7 +40,6 @@ func GetUser(c *fiber.Ctx) error {
 				"code":    "INTERNAL_SERVER_ERROR",
 				"message": "Something went wrong on our side. Try again later.",
 			},
-			"data": fiber.Map{},
 		})
 	}
 
@@ -54,13 +51,10 @@ func GetUser(c *fiber.Ctx) error {
 				"code":    "INTERNAL_SERVER_ERROR",
 				"message": "Something went wrong on our side. Try again later.",
 			},
-			"data": fiber.Map{},
 		})
 	}
 
-	return c.JSON(fiber.Map{
-		"data": userInfo,
-	})
+	return c.JSON(userInfo)
 }
 
 // GET "/api/user/sessions"
@@ -72,7 +66,6 @@ func GetUserSessions(c *fiber.Ctx) error {
 				"code":    "UNAUTHENTICATED",
 				"message": "Session token couldn't be found in header or cookie",
 			},
-			"data": fiber.Map{},
 		})
 	}
 
@@ -83,7 +76,6 @@ func GetUserSessions(c *fiber.Ctx) error {
 				"code":    "UNAUTHENTICATED",
 				"message": "Session token is invalid.",
 			},
-			"data": fiber.Map{},
 		})
 	}
 
@@ -95,7 +87,6 @@ func GetUserSessions(c *fiber.Ctx) error {
 				"code":    "INTERNAL_SERVER_ERROR",
 				"message": "Something went wrong on our side. Try again later.",
 			},
-			"data": fiber.Map{},
 		})
 	}
 
@@ -114,7 +105,6 @@ func GetUserSessions(c *fiber.Ctx) error {
 				"code":    "INTERNAL_SERVER_ERROR",
 				"message": "Something went wrong on our side. Try again later.",
 			},
-			"data": fiber.Map{},
 		})
 	}
 
@@ -131,7 +121,6 @@ func GetUserSessions(c *fiber.Ctx) error {
 				"code":    "INTERNAL_SERVER_ERROR",
 				"message": "Something went wrong on our side. Try again later.",
 			},
-			"data": fiber.Map{},
 		})
 	}
 
@@ -147,9 +136,7 @@ func GetUserSessions(c *fiber.Ctx) error {
 		parsedSessions = append(parsedSessions, session)
 	}
 
-	return c.JSON(fiber.Map{
-		"data": parsedSessions,
-	})
+	return c.JSON(parsedSessions)
 }
 
 // DELETE "/api/user/sessions/:sessionId"
@@ -161,7 +148,6 @@ func InvalidateSession(c *fiber.Ctx) error {
 				"code":    "INVALID_REQUEST",
 				"message": "SessionId parameter is invalid.",
 			},
-			"data": fiber.Map{},
 		})
 	}
 
@@ -172,7 +158,6 @@ func InvalidateSession(c *fiber.Ctx) error {
 				"code":    "UNAUTHENTICATED",
 				"message": "Session token couldn't be found in header or cookie",
 			},
-			"data": fiber.Map{},
 		})
 	}
 
@@ -183,7 +168,6 @@ func InvalidateSession(c *fiber.Ctx) error {
 				"code":    "UNAUTHENTICATED",
 				"message": "Session token is invalid.",
 			},
-			"data": fiber.Map{},
 		})
 	}
 
@@ -195,7 +179,6 @@ func InvalidateSession(c *fiber.Ctx) error {
 				"code":    "INTERNAL_SERVER_ERROR",
 				"message": "Something went wrong on our side. Try again later.",
 			},
-			"data": fiber.Map{},
 		})
 	}
 
@@ -206,7 +189,6 @@ func InvalidateSession(c *fiber.Ctx) error {
 				"code":    "NOT_FOUND",
 				"message": "Session was not found.",
 			},
-			"data": fiber.Map{},
 		})
 	}
 
@@ -219,7 +201,6 @@ func InvalidateSession(c *fiber.Ctx) error {
 				"code":    "INTERNAL_SERVER_ERROR",
 				"message": "Something went wrong on our side. Try again later.",
 			},
-			"data": fiber.Map{},
 		})
 	}
 
@@ -231,7 +212,6 @@ func InvalidateSession(c *fiber.Ctx) error {
 				"code":    "INTERNAL_SERVER_ERROR",
 				"message": "Something went wrong on our side. Try again later.",
 			},
-			"data": fiber.Map{},
 		})
 	}
 
@@ -239,7 +219,6 @@ func InvalidateSession(c *fiber.Ctx) error {
 
 	return c.Status(200).JSON(fiber.Map{
 		"success": true,
-		"data":    parsedSession,
 	})
 }
 
@@ -253,7 +232,6 @@ func InvalidateAllSessions(c *fiber.Ctx) error {
 				"code":    "UNAUTHENTICATED",
 				"message": "Session token couldn't be found in header or cookie",
 			},
-			"data": fiber.Map{},
 		})
 	}
 
@@ -264,7 +242,6 @@ func InvalidateAllSessions(c *fiber.Ctx) error {
 				"code":    "UNAUTHENTICATED",
 				"message": "Session token is invalid.",
 			},
-			"data": fiber.Map{},
 		})
 	}
 
@@ -276,7 +253,6 @@ func InvalidateAllSessions(c *fiber.Ctx) error {
 				"code":    "INTERNAL_SERVER_ERROR",
 				"message": "Something went wrong on our side. Try again later.",
 			},
-			"data": fiber.Map{},
 		})
 	}
 
@@ -287,7 +263,6 @@ func InvalidateAllSessions(c *fiber.Ctx) error {
 				"code":    "INTERNAL_SERVER_ERROR",
 				"message": "Something went wrong on our side. Try again later.",
 			},
-			"data": fiber.Map{},
 		})
 	}
 
@@ -298,7 +273,6 @@ func InvalidateAllSessions(c *fiber.Ctx) error {
 				"code":    "INTERNAL_SERVER_ERROR",
 				"message": "Something went wrong on our side. Try again later.",
 			},
-			"data": fiber.Map{},
 		})
 	}
 
@@ -317,7 +291,6 @@ func InvalidateAllSessions(c *fiber.Ctx) error {
 				"code":    "INTERNAL_SERVER_ERROR",
 				"message": "Something went wrong on our side. Try again later.",
 			},
-			"data": fiber.Map{},
 		})
 	}
 
